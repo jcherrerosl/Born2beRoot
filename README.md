@@ -1,5 +1,5 @@
 # Guía de Born2Beroot
-## Basada en la hoja de evaluación
+### Basada en la hoja de evaluación
 
 En esta guía se proporcionarán los pasos para la configuración de la máquina virtual exigida en el Subject del proyecto. No obstante, para seguir estos pasos, seguiremos la hoja de la evaluación en lugar del subject, ya que esta cubre más y podemos ver de un modo preciso cómo hacer las demostraciones.
 
