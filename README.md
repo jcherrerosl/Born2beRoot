@@ -74,6 +74,13 @@ Con este comando, nos saldrá algo similar a
 > PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"  
 > NAME="Debian GNU/Linux"
 
+
+### Evaluación de Configuración Inicial:
+- [ ] ¿Está el servicio UFW activo?
+- [ ] ¿El servicio SSH está funcionando correctamente?
+- [ ] ¿El sistema no tiene entorno gráfico al inicio?
+
+
 ## Usuarios y grupos
 - El subject solicita que un usuario con el login del estudiante evaluado esté presente en la máquina virtual. Comprueba que existe y que pertenece a los grupos "sudo" y "user42".
 - El evaluador deberá crear un usuario y el estudiante evaluado, un grupo llamado "evaluating", en el cual meterá al usuario recién creado.
