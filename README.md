@@ -7,6 +7,9 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 
 ## Configuración inicial
 - Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
+
+<span style="background-color: black; color: white; font-family: 'Courier New', monospace;">Please, unlock disk sda5_crypt:</span>
+
 - Asegúrate de que la máquina no tiene un entorno gráfico al iniciarla.
     Esto se puede ver escribiendo el comando
   
@@ -54,3 +57,10 @@ Para esto, podemos hacerlo de forma similar al UFW:
 > ```bash
 > sudo systemctl ssh status
 > ```
+
+- Comprueba que el sistema operativo es Debian o Rocky. En este caso, demostraremos que es Debian, viendo la cabecera del archivo /etc/os-release
+  > ```bash
+  > head -n 2 /etc/os-release
+  >
+Con este comando, nos saldrá algo similar a 
+
