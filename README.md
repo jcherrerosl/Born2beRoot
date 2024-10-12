@@ -59,9 +59,9 @@ Para esto, podemos hacerlo de forma similar al UFW:
 > ```
 
 - Comprueba que el sistema operativo es Debian o Rocky. En este caso, demostraremos que es Debian, viendo la cabecera del archivo /etc/os-release
-  > ```bash
-  > head -n 2 /etc/os-release
-  >
+ > ```bash
+ > head -n 2 /etc/os-release
+ > ```
 Con este comando, nos saldrá algo similar a 
 
 > PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
