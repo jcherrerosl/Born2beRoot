@@ -19,4 +19,5 @@ Ejemplo de máquina sin entorno gráfico:
 > ~% echo $DISPLAY
 >
 > ~%
+> 
 Ejemplo de máquina con entorno gráfico: 
