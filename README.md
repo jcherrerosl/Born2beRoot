@@ -21,3 +21,12 @@ Ejemplo de máquina sin entorno gráfico:
 > ~%
 > 
 Ejemplo de máquina con entorno gráfico: 
+> ~% echo $DISPLAY
+> :0
+> ~%
+>
+
+- [  ] Check
+
+- Comprueba que el servicio UFW está iniciado:
+  
