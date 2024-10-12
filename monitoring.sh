@@ -37,7 +37,7 @@ user_log=$(users | wc -w)
 
         #Network: ip + MAC
 ip=$(hostname -I)
-mac=$(ip link |grep "ether" | awk '{print $2}')
+mac=$(ip link | grep "ether" | awk '{print $2}')
 
         #Sudo commands
 sudo_commands=$(cat /var/log/sudo/sudologs.log | grep "USER=root" | wc -l)
