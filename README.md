@@ -64,5 +64,38 @@ Para esto, podemos hacerlo de forma similar al UFW:
  > ```
 Con este comando, nos saldrá algo similar a 
 
-> PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+> PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"  
 > NAME="Debian GNU/Linux"
+
+## Usuario
+- El subject solicita que un usuario con el login del estudiante evaluado esté presente en la máquina virtual. Comprueba que existe y que pertenece a los grupos "sudo" y "user42".
+- El evaluador deberá crear un usuario y el estudiante evaluado, un grupo llamado "evaluating", en el cual meterá al usuario recién creado.
+
+  Para crear un usuario ejecutaremos el comando `sudo adduser user_name`. De forma paralela, para crear un grupo, ejecutaremos `sudo addgroup group_name`. Para añadir el usuario creado al grupo elegido, escribiremos el comando `sudo adduser user_name group_name`.
+  Veamos un ejemplo simplificado con mi login:
+
+> ~% sudo adduser juanherr  
+> [sudo] contraseña para user:  
+> Añadiendo el usuario 'juanherr' ...  
+> ~%   
+
+> ~% sudo addgroup evaluating  
+> Añadiendo el grupo 'evaluating' ...   
+> Hecho.  
+> ~% sudo adduser juanherr evaluating  
+> Añadiendo al usuario 'juanherr' al grupo 'evaluating' ...  
+> Hecho.   
+> ~%
+
+Ahora tenemos el nuevo user "juanherr" dentro del grupo "evaluating". Para demostrar esto, podemos hacer dos cosas: ver los usuarios que están dentro de un grupo, con el comando `getent group group_name` o viendo los grupos a los que pertenece el usuario, con el comando `groups user_name`.
+
+> ~% getent group evaluating    
+> evaluating:x:juanherr    
+> ~%   
+
+> ~% groups juanherr  
+> juanherr : users evaluating   
+> ~%   
+
+
+
