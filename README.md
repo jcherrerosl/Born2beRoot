@@ -6,6 +6,10 @@ En esta guía se proporcionarán los pasos para la configuración de la máquina
 Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado tiene que ser capaz de ayudarle en todo momento. Es decir, entiende lo que haces.
 
 ## Configuración inicial
-· Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
-- [ ]
+- Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
+- Asegúrate de que la máquina no tiene un entorno gráfico al iniciarla.
+    Esto se puede ver escribiendo el comando
+  ```bash
+  echo $DISPLAY
+
 
