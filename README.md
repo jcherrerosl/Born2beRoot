@@ -15,16 +15,17 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
   > ```
   y saldrá un salto de línea, si no hay entorno gráfico. Esto podemos compararlo con la terminal usual de nuestro sistema, que mostrará :0 en su lugar. 
 
-Ejemplo de máquina sin entorno gráfico: 
+> **Ejemplo de máquina sin entorno gráfico:**
+> 
 > ~% echo $DISPLAY
->
+> 
 > ~%
 > 
-Ejemplo de máquina con entorno gráfico: 
+> **Ejemplo de máquina con entorno gráfico:**
+> 
 > ~% echo $DISPLAY
 > :0
 > ~%
->
 
 - [  ] Check
 
