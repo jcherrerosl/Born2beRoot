@@ -125,14 +125,14 @@ Nos dirigimos a la línea 165 y modificamos esos tres valores, de esta forma:
 
 Ahora configuraremos el resto de reglas. En este caso, con nano también, editaremos el archivo `/etc/security/pwquality.conf`. 
 
-`difok` lo cambiaremos en otro lugar, ya que NO SE APLICA A ROOT. Es el número de caracteres que no son parte de la antigua contraseña.
-`minlen` es la longitud mínima de la contraseña. Lo establecemos en 10 caracteres.
-`dcredit` es el mínimo número de caracteres numéricos (digit) exigido cuando el valor es negativo. Lo establecemos en -1.
-`ucredit` es el mínimo número de caracteres alfabéticos en mayúscula (uppercase). Ponemos -1.
-`lcredit` es el número mínimo de caracteres alfabéticos en minúscula (lowercase). Ponemos -1. 
-`ocredit` se refiere a otros (other) tipo de caracteres, como !%&. El subject no pide nada. 
-`minclass`es el número mínimo de clases de caracteres requeridos por la contraseña. Debe ser 3 (dígitos, mayúsculas y minúsculas). 
-`maxrepeat` indica el número máximo de caracteres consecutivos en la nueva contraseña. Ponemos 3. 
+`difok` lo cambiaremos en otro lugar, ya que NO SE APLICA A ROOT. Es el número de caracteres que no son parte de la antigua contraseña.     
+`minlen` es la longitud mínima de la contraseña. Lo establecemos en 10 caracteres.   
+`dcredit` es el mínimo número de caracteres numéricos (digit) exigido cuando el valor es negativo. Lo establecemos en -1.   
+`ucredit` es el mínimo número de caracteres alfabéticos en mayúscula (uppercase). Ponemos -1.    
+`lcredit` es el número mínimo de caracteres alfabéticos en minúscula (lowercase). Ponemos -1.    
+`ocredit` se refiere a otros (other) tipo de caracteres, como !%&. El subject no pide nada.    
+`minclass`es el número mínimo de clases de caracteres requeridos por la contraseña. Debe ser 3 (dígitos, mayúsculas y minúsculas).   
+`maxrepeat` indica el número máximo de caracteres consecutivos en la nueva contraseña. Ponemos 3.    
 
 Debe quedar algo así:
 
