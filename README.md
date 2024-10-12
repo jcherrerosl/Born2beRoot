@@ -9,6 +9,7 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 - Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
 - Asegúrate de que la máquina no tiene un entorno gráfico al iniciarla.
     Esto se puede ver escribiendo el comando
+  
   > ```bash
   > echo $DISPLAY
   > ```
