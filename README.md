@@ -5,6 +5,13 @@ En esta guía se proporcionarán los pasos para la configuración de la máquina
 
 Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado tiene que ser capaz de ayudarle en todo momento. Es decir, entiende lo que haces.
 
+## Índice
+1. [Configuración inicial](#configuración-inicial)
+2. [Usuarios y grupos](#usuarios-y-grupos)
+3. [Políticas de contraseñas](#políticas-de-contraseñas)
+
+---
+
 ## Configuración inicial
 - Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
 
