@@ -7,6 +7,7 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 
 ## Configuración inicial
 - Antes de intentar conectarse a la máquina, se pedirá una contraseña. Esta es la de la encriptación del disco sda5.
+![image](https://github.com/user-attachments/assets/6212e04b-4226-4905-8209-591347a89ab8)
 
 <span style="background-color: black; color: white; font-family: 'Courier New', monospace;">Please, unlock disk sda5_crypt:</span>
 
