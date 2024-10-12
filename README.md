@@ -67,7 +67,7 @@ Con este comando, nos saldrá algo similar a
 > PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"  
 > NAME="Debian GNU/Linux"
 
-## Usuario
+## Usuarios y grupos
 - El subject solicita que un usuario con el login del estudiante evaluado esté presente en la máquina virtual. Comprueba que existe y que pertenece a los grupos "sudo" y "user42".
 - El evaluador deberá crear un usuario y el estudiante evaluado, un grupo llamado "evaluating", en el cual meterá al usuario recién creado.
 
@@ -96,6 +96,8 @@ Ahora tenemos el nuevo user "juanherr" dentro del grupo "evaluating". Para demos
 > ~% groups juanherr  
 > juanherr : users evaluating   
 > ~%   
+
+## Políticas de contraseñas 
 
 - Asegúrate de que las normas expuestas en el subject respecto a la política de contraseñas se ha seguido correctamente.
 
