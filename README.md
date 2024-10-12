@@ -76,7 +76,7 @@ Con este comando, nos saldrá algo similar a
 
 
 ### Evaluación de Configuración Inicial:
-- [ ] Se pide una contraseña al encender la máquina (sda5_crypt)
+- [x] Se pide una contraseña al encender la máquina (sda5_crypt)
 - [ ] El servicio UFW está activo
 - [ ] El servicio SSH está funcionando correctamente
 - [ ] El sistema no tiene entorno gráfico
