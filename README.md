@@ -125,6 +125,28 @@ Nos dirigimos a la línea 165 y modificamos esos tres valores, de esta forma:
 
 ![image](https://github.com/user-attachments/assets/d02e5c53-7739-437c-a06e-69116a49c937)
 
+Como esta modificación no es retroactiva, tendremos que cambiar las reglas asociadas a nuestro usuario y a root con el comando `chage`. Para listar las reglas de expiración, renovación y avisos de nuestra contraseña, escribiremos
+
+```bash
+sudo chage -l user_name    
+```
+y, al final, nos aparecerá algo como: 
+
+> ~% sudo chage -l root            
+>  [...]                         
+> Número de días mínimo entre cambio de contraseña             : 0             
+> Número de días máximo entre cambio de contraseña             : 99999      
+> Número de días de aviso antes de que caduque la contraseña   : 7     
+> ~%        
+
+Para modificarlas a 2, 30 y 7, respectivamente, como exige el subject, utilizaremos las flags -m (mínimo), -M (máximo) y -W (warning, aviso).
+```bash
+sudo chage -m 2 user_name      
+sudo chage -M 30 user_name     
+sudo chage -W 7 user_name
+```
+Esto lo repetiremos para nuestro usuario y para root. 
+
 Ahora configuraremos el resto de reglas. En este caso, con nano también, editaremos el archivo `/etc/security/pwquality.conf`. 
 
 `difok` lo cambiaremos en otro lugar, ya que NO SE APLICA A ROOT. Es el número de caracteres que no son parte de la antigua contraseña.     
