@@ -64,3 +64,5 @@ Para esto, podemos hacerlo de forma similar al UFW:
   >
 Con este comando, nos saldrá algo similar a 
 
+> PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+> NAME="Debian GNU/Linux"
