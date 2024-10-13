@@ -232,4 +232,50 @@ Para ello, ejecutaremos el comando _list block_ `lsblk`. Esto nos mostrará algo
   <em>Con bonus</em>
 </p>
 
+## SUDO 
 
+- Comprueba que el programa sudo está instalado correctamente en la máquina virtual.
+
+Para demostrar esto tenemos varias alternativas, como es habitual. La más sencilla es `sudo --version`, que nos mostrará la versión de sudo instalada, lo cual implica que existe. Otra forma, que devuelve algo más de información, es `dpkg -l sudo`, que nos devolverá una tabla con el nombre del programa, la versión, la arquitectura y una pequeña descripción. 
+
+- Asignamos el usuario que hemos creado al evaluador al grupo sudo, como hemos hecho antes con el grupo evaluating.
+
+  > ~$ sudo adduser newuser sudo     
+  > [sudo] contraseña para login:        
+  > Añadiendo el usuario 'newuser' al grupo 'sudo' ...        
+  > Hecho.      
+  > ~$     
+
+- Ahora debemos poder mostrar el valor de sudo con algún ejemplo. Podemos hacer una comparativa con un comando ejecutado sin sudo y con sudo (añadiéndole privilegios de super usuario). Vamos a probar a listar los elementos del directorio /root. 
+
+  > login@login42:\~$ ls /root        
+  > ls: no se puede abrir el directorio '/root': Permiso denegado        
+  > login@login42:\~$ sudo ls /root        
+  > login@login42:\~$ _
+
+- A continuación, vamos a mostrar la implementación de las normas fijadas por el enunciado para sudo.
+
+  ![image](https://github.com/user-attachments/assets/b816b971-616b-4fd8-b31e-f60336315b4f)
+
+Antes de implementar nada vamos a crear una carpeta `/var/log/sudo` y un archivo `sudo_log`dentro. Podemos hacer `sudo mkdir /var/log/sudo` y `sudo touch /var/log/sudo/sudo_log`. Aquí es donde archivaremos los inputs y outputs de los comandos ejecutados con sudo. 
+
+Si entramos en el archivo `/etc/sudoers` podemos modificar todas las normas que aplicaremos a sudo. Para ello, por ser un archivo extremadamente sensible, deberemos editarlo de forma segura, a través de la modificación de un archivo temporal. Esto se hace editando con el comando `visudo`.
+
+  ```bash
+  sudo visudo
+  ```
+
+En los `Defaults`del archivo, añadiremos todas estas reglas:
+
+Defaults        passwd_tries=3
+Defaults        badpass_message="¡Contraseña incorrecta! Inténtalo de nuevo."
+Defaults        logfile="/var/log/sudo/sudo_log"
+Defaults        requiretty
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+Dejando las que ya había, quedaría algo así: 
+
+![image](https://github.com/user-attachments/assets/ab1343d3-8739-4a01-97aa-4982eba7150a)
+
+- El evaluador comprobará que `/var/log/sudo` existe y que tiene al menos un archivo. Asimismo, comprobará el contenido del archivo que encuentre, en nuestro caso, `sudo_log`, donde encontrará el historial de inputs y outputs de los comandos ejecutados con sudo, haciendo, por ejemplo, `sudo cat /var/log/sudo/sudo_log`.
+- Ahora deberá ejecutar un comando con sudo para comprobar que se actualiza en tiempo real. Un ejemplo sería `sudo nano prueba`, que abrirá un archivo nuevo para editar con nano. Al cerrar, si ejecuta `sudo tail -1 /var/log/sudo/sudo_log`, podrá ver el último comando ejecutado con sudo, que será `sudo nano prueba`, demostrando que todo funciona correctamente. 
