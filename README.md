@@ -282,3 +282,58 @@ Dejando las que ya había, quedaría algo así:
 
 > [!NOTE]
 > He usado `tail` en vez de `cat` para mostrar la última línea (-n 1) y no todo el archivo entero. De forma análoga, podría usar `head -n #` para mostrar las \# primeras líneas.
+
+## UFW
+
+- Debemos mostrar al evaluador que UFW (Uncomplicated FireWall) está correctamente instalado en la VM. Como hicimos al principio, podemos ejecutar `sudo service ufw status` y se nos indicará que está cargado, habilitado y activo.
+- Para demostrar que existe al menos una regla para el puerto 4242, ejecutaremos el comando `sudo ufw status`. Si hemos hecho el bonus, deberían salir otras también.
+  Ejemplo:
+```
+> login@login42:~$ sudo ufw status              
+> Status: active                          
+>                         
+> To                Action        From                      
+> --                ------        ----                              
+> 4242              ALLOW         Anywhere                        
+> 4242 (v6)         ALLOW         Anywhere (v6)                           
+>                           
+> login@login42:~$                
+```
+- Ahora tenemos que añadir una nueva regla para el puerto 8080, comprobar que está correctamente añadida y eliminarla.
+
+Añadimos la regla:  
+
+> login@login42:\~$ sudo ufw allow 8080                         
+> Rule added                    
+> Rule added (v6)                 
+> login@login42:\~$                                   
+
+Vemos que está correctamente añadida
+```
+> login@login42:~$ sudo ufw status                          
+> Status: active                           
+>                                      
+> To                Action        From                            
+> --                ------        ----                        
+> 4242              ALLOW         Anywhere                  
+> 8080              ALLOW         Anywhere                   
+> 4242 (v6)         ALLOW         Anywhere (v6)                     
+> 8080 (v6)         ALLOW         Anywhere (v6)                                    
+>                              
+> login@login42:~$                 
+```
+Ahora la eliminamos. Para ello, tenemos que numerar la lista de reglas y eliminar el número asignado a la regla que queremos quitar. Haremos `sudo ufw status numbered`
+```
+> login@login42:~$ sudo ufw status                             
+> Status: active                                   
+>                                       
+>         To                Action        From                              
+>         --                ------        ----                             
+> [ 1]    4242              ALLOW         Anywhere                  
+> [ 2]    8080              ALLOW         Anywhere                   
+> [ 3]    4242 (v6)         ALLOW         Anywhere (v6)                     
+> [ 4]    8080 (v6)         ALLOW         Anywhere (v6)                               
+>                                       
+> login@login42:~$
+```
+
