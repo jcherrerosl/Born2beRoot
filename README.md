@@ -278,4 +278,7 @@ Dejando las que ya había, quedaría algo así:
 ![image](https://github.com/user-attachments/assets/ab1343d3-8739-4a01-97aa-4982eba7150a)
 
 - El evaluador comprobará que `/var/log/sudo` existe y que tiene al menos un archivo. Asimismo, comprobará el contenido del archivo que encuentre, en nuestro caso, `sudo_log`, donde encontrará el historial de inputs y outputs de los comandos ejecutados con sudo, haciendo, por ejemplo, `sudo cat /var/log/sudo/sudo_log`.
-- Ahora deberá ejecutar un comando con sudo para comprobar que se actualiza en tiempo real. Un ejemplo sería `sudo nano prueba`, que abrirá un archivo nuevo para editar con nano. Al cerrar, si ejecuta `sudo tail -1 /var/log/sudo/sudo_log`, podrá ver el último comando ejecutado con sudo, que será `sudo nano prueba`, demostrando que todo funciona correctamente. 
+- Ahora deberá ejecutar un comando con sudo para comprobar que se actualiza en tiempo real. Un ejemplo sería `sudo nano prueba`, que abrirá un archivo nuevo para editar con nano. Al cerrar, si ejecuta `sudo tail -n 1 /var/log/sudo/sudo_log`, podrá ver el último comando ejecutado con sudo, que será `sudo nano prueba`, demostrando que todo funciona correctamente.
+
+> [!NOTE]
+> He usado `tail` en vez de `cat` para mostrar la última línea (-n 1) y no todo el archivo entero. De forma análoga, podría usar `head -n #` para mostrar las \# primeras líneas.
