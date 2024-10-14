@@ -208,11 +208,11 @@ Para demostrar el hostname, con ejecutar el comando `hostname` debería de ser s
 > login42        
 > login@login42:\~$ 
 
-Ahora cambiaremos el hostname editando el archivo `/etc/hostname`. Podemos hacer `sudo nano /etc/hostname` y cambiar el nombre al login nuevo, seguido de 42. Guardamos y después hacemos `sudo reboot`. Al iniciar, nos debería salir lo siguiente:
+Ahora cambiaremos el hostname editando el archivo `/etc/hostname` y `/etc/hosts`. Podemos usar nano para cambiar el nombre al login nuevo, seguido de 42. Guardamos y después hacemos `sudo reboot`. Al iniciar, nos debería salir lo siguiente:
 
-> login@newlogin42:~$ _           
+> login@newlogin42:~$ _
 
-Ahora podemos devolverlo al original.
+y, haciendo `hostname`, saldrá el nuevo hostname. Ahora podemos devolverlo al original.
 
 ### Particiones
 
