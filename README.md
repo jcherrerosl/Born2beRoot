@@ -204,7 +204,7 @@ Los criterios de evaluación son claros. Nuestro hostname, que hemos definido al
 
 Para demostrar el hostname, con ejecutar el comando `hostname` debería de ser suficiente, ya que nos devuelve únicamente su nombre:
 
-> login@login42:\~$            
+> login@login42:\~$ hostname                           
 > login42        
 > login@login42:\~$ 
 
