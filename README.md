@@ -11,9 +11,14 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 2. [Usuarios y grupos](#usuarios-y-grupos)
 3. [Políticas de contraseñas](#políticas-de-contraseñas)
 4. [Hostname y particiones](#hostname-y-particiones)
+   1. [Hostname](#hostname)
+   2. [Particiones](#particiones)
 5. [SUDO](#sudo)
 6. [UFW](#ufw)
 7. [SSH](#ssh)
+8. [Seguimiento del script](#seguimiento-del-script)
+   1. [Creación del Script](#creación-del-script)
+   2. [Ejecución automática del script. Uso de Cron.](#ejecución-automática-del-script-uso-de-cron)
 
 
 ---
