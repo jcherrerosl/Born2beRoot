@@ -339,6 +339,6 @@ Ahora la eliminamos. Para ello, tenemos que numerar la lista de reglas y elimina
 
 Una vez numerados, con el comando `sudo ufw delete #` podremos eliminar el número `#`. Por ejemplo, en este caso, haríamos `sudo ufw delete 2`. Después, volveremos a numerar los restantes y a eliminar el siguiente.  
 
-[!WARNING]
-Por seguridad, no podemos eliminar más de una regla a la vez, por lo que, por cada una que eliminemos, debemos volver a ejecutar `sudo ufw status numbered` para ver la nueva asignación de números a los puertos.   
+> [!WARNING]
+> Por seguridad, no podemos eliminar más de una regla a la vez, por lo que, por cada una que eliminemos, debemos volver a ejecutar `sudo ufw status numbered` para ver la nueva asignación de números a los puertos.   
 
