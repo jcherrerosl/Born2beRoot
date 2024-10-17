@@ -423,7 +423,7 @@ Primero vamos a crear el script `monitoring.sh` y, después, procederemos a util
 
 Un script es un archivo de texto que contiene una serie de comandos que el sistema ejecutará de forma secuencial. Esto es, deberemos incluir sendos comandos para visualizar todo lo que se nos pide. 
 
-> [!INFO]   
+> [!NOTE]   
 > Mi script está subido al repositorio como archivo, por lo que no me explayaré aquí explicando los comandos.   
 > Se ruega verificar que funciona, ya que puede variar dependiendo del idioma del sistema. En mi caso, está en español.
 
