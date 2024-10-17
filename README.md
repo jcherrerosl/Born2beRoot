@@ -53,7 +53,6 @@ Primero lo instalaremos en nuestro sistema, con `sudo apt install ufw`. A contin
 sudo apt install ufw   
 sudo ufw enable   
 ```
-Para añadir la regla 4242, ejecutaremos el comando `sudo ufw allow 4242`. 
 
 Ahora, para demostrar al evaluador que el servicio UFW está iniciado correctamente, podemos ejecutar cualquiera de estos comandos:  
 
@@ -313,7 +312,14 @@ Dejando las que ya había, quedaría algo así:
 ## UFW
 
 - Debemos mostrar al evaluador que UFW está correctamente instalado en la VM. Como hicimos al principio, podemos ejecutar `sudo service ufw status` y se nos indicará que está cargado, habilitado y activo.
-- Para demostrar que existe al menos una regla para el puerto 4242, ejecutaremos el comando `sudo ufw status`. Si hemos hecho el bonus, deberían salir otras también.
+
+Añadir reglas a UFW es bastante sencillo. Simplemente, tenemos que escribir el comando `sudo ufw allow #`, donde `#` es el puerto que queremos permitir. De modo que haremos
+
+```bash
+sudo ufw allow 4242   
+```
+
+- Ahora debemos demostrar al evaluador que existe al menos una regla para el puerto 4242, ejecutaremos el comando `sudo ufw status`. Si hemos hecho el bonus, deberían salir otras también.
   Ejemplo:
 ```
 > login@login42:~$ sudo ufw status              
@@ -371,4 +377,33 @@ Una vez numerados, con el comando `sudo ufw delete #` podremos eliminar el núme
 
 ## SSH 
 
-- En la evaluación se pide comprobar que el servicio SSH está correctamente instalado. 
+- En la evaluación se pide comprobar que el servicio SSH está correctamente instalado. Podemos hacerlo de varias formas. La más sencilla es buscar con `dpkg` los paquetes instalados, listarlos y filtrar los que contengan _openssh_.
+```bash
+dpgk -l | grep openssh   
+```
+
+- Vamos a habilitar el puerto 4242. Para ello, abrimos el archivo /etc/ssh/sshd_config con el editor nano y descomentamos la línea #Port 22, y la cambiamos por 4242. Asimismo, nos aseguramos de descomentar la línea PermitRootLogin y asignarle el valor "no". Esto evitará que podamos conectarnos a root con SSH.
+
+El resultado sería algo así:  
+
+  ![image](https://github.com/user-attachments/assets/4f2c812f-c92c-493f-b210-65524a2fba08)
+
+- Ahora llega la parte interesante: vamos a conectarnos con otro usuario a través de SSH.   
+
+Lo primero que haremos será obtener la ip local del usuario con el que nos vamos a conectar. Esto se hace con el comando:  
+```bash
+hostname -I   
+```
+
+Ahora podemos realizar la conexión usando:
+
+```
+ssh newuser@iplocal -p 4242   
+```
+donde:
+- `newuser` es el usuario con el que nos queremos conectar.  
+- `iplocal` es el resultado de `hostname -I`.
+
+Al ejecutar el comando, nos pedirá una confirmación para conectarnos (la primera vez) y la contraseña de `newuser`. Tras aceptar e introducir la contraseña, estaremos conectados al nuevo usuario a través de SSH.
+
+
