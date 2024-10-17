@@ -6,9 +6,29 @@ En esta guía se proporcionarán los pasos para la configuración de la máquina
 Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado tiene que ser capaz de ayudarle en todo momento. Es decir, entiende lo que haces.
 
 ## Índice
+
 1. [Configuración inicial](#configuración-inicial)
+    - [Verificar que la máquina no tiene entorno gráfico](#configuración-inicial).
+    - [Comprobar el estado de los servicios UFW y SSH](#configuración-inicial).
+    - [Verificar que el sistema operativo es Debian o Rocky](#configuración-inicial).
 2. [Usuarios y grupos](#usuarios-y-grupos)
+    - [Creación de usuarios y grupos](#usuarios-y-grupos).
+    - [Asignación de usuarios a grupos](#usuarios-y-grupos).
 3. [Políticas de contraseñas](#políticas-de-contraseñas)
+    - [Configuración de políticas de contraseñas fuertes](#políticas-de-contraseñas).
+    - [Modificación de las reglas en `/etc/login.defs` y `/etc/security/pwquality.conf`](#políticas-de-contraseñas).
+4. [Hostname y particiones](#hostname-y-particiones)
+    - [Configuración y demostración del hostname](#hostname).
+    - [Visualización de las particiones del disco](#particiones).
+5. [SUDO](#sudo)
+    - [Comprobación de la instalación de SUDO](#sudo).
+    - [Configuración de reglas para SUDO](#sudo).
+6. [UFW](#ufw)
+    - [Verificar el estado de UFW](#ufw).
+    - [Añadir y eliminar reglas de UFW](#ufw).
+7. [SSH](#ssh)
+    - [Verificación del servicio SSH](#ssh).
+
 
 ---
 
@@ -342,3 +362,6 @@ Una vez numerados, con el comando `sudo ufw delete #` podremos eliminar el núme
 > [!WARNING]
 > Por seguridad, no podemos eliminar más de una regla a la vez, por lo que, por cada una que eliminemos, debemos volver a ejecutar `sudo ufw status numbered` para ver la nueva asignación de números a los puertos.   
 
+## SSH 
+
+- En la evaluación se pide comprobar que el servicio SSH está correctamente instalado. 
