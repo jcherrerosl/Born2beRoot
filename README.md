@@ -296,7 +296,16 @@ Dejando las que ya había, quedaría algo así:
 
 ## UFW
 
-- Debemos mostrar al evaluador que UFW (Uncomplicated FireWall) está correctamente instalado en la VM. Como hicimos al principio, podemos ejecutar `sudo service ufw status` y se nos indicará que está cargado, habilitado y activo.
+Vamos a configurar UFW (Uncomplicated FireWall). Esta es una herramienta fácil de usar para gestionar el firewall en sistemas Linux. Está diseñada para hacer que la configuración del firewall sea sencilla, permitiendo a los usuarios permitir o bloquear el tráfico de red con comandos básicos. UFW se utiliza para proteger tu sistema controlando qué conexiones entrantes o salientes están permitidas.  
+
+Primero lo instalaremos en nuestro sistema, con `sudo apt install ufw`. A continuación, lo habilitaremos con `sudo ufw enable`. 
+
+```bash
+> sudo apt install ufw   
+> sudo ufw enable   
+```
+
+- Debemos mostrar al evaluador que UFW está correctamente instalado en la VM. Como hicimos al principio, podemos ejecutar `sudo service ufw status` y se nos indicará que está cargado, habilitado y activo.
 - Para demostrar que existe al menos una regla para el puerto 4242, ejecutaremos el comando `sudo ufw status`. Si hemos hecho el bonus, deberían salir otras también.
   Ejemplo:
 ```
