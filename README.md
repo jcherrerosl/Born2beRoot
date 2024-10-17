@@ -8,26 +8,12 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 ## Índice
 
 1. [Configuración inicial](#configuración-inicial)
-    - [Verificar que la máquina no tiene entorno gráfico](#configuración-inicial).
-    - [Comprobar el estado de los servicios UFW y SSH](#configuración-inicial).
-    - [Verificar que el sistema operativo es Debian o Rocky](#configuración-inicial).
 2. [Usuarios y grupos](#usuarios-y-grupos)
-    - [Creación de usuarios y grupos](#usuarios-y-grupos).
-    - [Asignación de usuarios a grupos](#usuarios-y-grupos).
 3. [Políticas de contraseñas](#políticas-de-contraseñas)
-    - [Configuración de políticas de contraseñas fuertes](#políticas-de-contraseñas).
-    - [Modificación de las reglas en `/etc/login.defs` y `/etc/security/pwquality.conf`](#políticas-de-contraseñas).
 4. [Hostname y particiones](#hostname-y-particiones)
-    - [Configuración y demostración del hostname](#hostname).
-    - [Visualización de las particiones del disco](#particiones).
 5. [SUDO](#sudo)
-    - [Comprobación de la instalación de SUDO](#sudo).
-    - [Configuración de reglas para SUDO](#sudo).
 6. [UFW](#ufw)
-    - [Verificar el estado de UFW](#ufw).
-    - [Añadir y eliminar reglas de UFW](#ufw).
 7. [SSH](#ssh)
-    - [Verificación del servicio SSH](#ssh).
 
 
 ---
@@ -59,6 +45,8 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 
 - Comprueba que el servicio UFW está iniciado:
 
+Para realizar la configuración completa de UFW, ver [Configuración de UFW](#ufw).
+
 Para comprobar esto, tenemos varias formas de hacerlo:
 
 > ```bash
@@ -75,6 +63,8 @@ Para comprobar esto, tenemos varias formas de hacerlo:
 
 - Comprueba que el servicio SSH está iniciado:
 
+Para realizar la configuración completa de SSH, ver [Configuración de SSH](#ssh)
+
 Para esto, podemos hacerlo de forma similar al UFW:
 
 > ```bash
@@ -85,7 +75,7 @@ Para esto, podemos hacerlo de forma similar al UFW:
 > sudo systemctl ssh status
 > ```
 
-- Comprueba que el sistema operativo es Debian o Rocky. En este caso, demostraremos que es Debian, viendo la cabecera del archivo /etc/os-release
+- Comprueba que el sistema operativo es Debian o Rocky. En este caso, demostraremos que es Debian, viendo la cabecera del archivo `/etc/os-release`
  > ```bash
  > head -n 2 /etc/os-release
  > ```
@@ -94,6 +84,7 @@ Con este comando, nos saldrá algo similar a
 > PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"  
 > NAME="Debian GNU/Linux"
 
+Otra forma válida sería mostrar la arquitectura del sistema con `uname -a`. 
 
 ### Evaluación de Configuración Inicial:
 - [x] Se pide una contraseña al encender la máquina (sda5_crypt)
