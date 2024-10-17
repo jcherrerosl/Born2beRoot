@@ -406,4 +406,61 @@ donde:
 
 Al ejecutar el comando, nos pedirá una confirmación para conectarnos (la primera vez) y la contraseña de `newuser`. Tras aceptar e introducir la contraseña, estaremos conectados al nuevo usuario a través de SSH.
 
+## Seguimiento del script
+
+- Durante la evaluación del proyecto, debe aparecer cada 10 minutos un script en la terminal, como indica el subject:  
+
+![image](https://github.com/user-attachments/assets/79f169ea-2534-4fa4-9f80-632df38ceff7)
+
+Primero vamos a crear el script y después procederemos a utilizar cron para que se ejecute.  
+
+### Creación del Script
+
+Un script es un archivo de texto que contiene una serie de comandos que el sistema ejecutará de forma secuencial. Esto es, deberemos incluir sendos comandos para visualizar todo lo que se nos pide. 
+
+> [!INFO]   
+> Mi script está subido al repositorio como archivo, por lo que no me explayaré aquí explicando los comandos.   
+> Se ruega verificar que funciona, ya que puede variar dependiendo del idioma del sistema. En mi caso, está en español.   
+
+- Arquitectura del sistema operativo y su versión del kernel:   
+      Para mostrar esto, podemos ejecutar `uname` (Unix name), que muestra cierta información del sistema. Con la flag `-a` o `--all`, mostrará toda la información.  
+
+- El número de núcleos físicos:
+      Esta información la podemos sacar de la información mostrada por el comando `lscpu` (list CPU). Para ello, debemos multiplicar el número de sockets por los núcleos que tiene cada socket.
+
+- El número de núcleos virtuales:
+      De igual manera, en `lscpu` encontramos este valor en 'CPU(s)'.
+
+- La memoria RAM disponible actualmente en tu servidor y su porcentaje de uso.
+      La información sobre memoria RAM y memoria swap está disponible con el comando `free`. En este caso, como nos pide la RAM, filtraremos con `grep` la línea que pone 'Mem'. Por defecto, la información aparece en bytes, pero podemos sacarla en megabytes con `-m` o `--mega`. Para sacar el porcentaje, dividimos la usada entre la total y multiplicamos por 100. Como se ve en el script, sacamos 2 decimales con `"scale=2"`, asociado a la herramienta `bc`.  
+
+> [!WARNING]
+> Para poder usar decimales y, en general, realizar cálculos matemáticos en scripts o desde comandos, es conveniente utilizar `bc` (Basic calculator).  
+> Podemos instalarla con `sudo apt install bc`.  
+
+- La memoria disponible actualmente en tu servidor y su utilización como un porcentaje.
+      Para sacar la carga de la CPU podemos usar el comando `top`. Este comando es en tiempo real, similar a lo que sería el administrador de tareas de Windows. Para nuestro fin, podemos sacar un solo lote, utilizando una captura del estado actual. Para ello, podemos utilizar `-bn1` (**b** batch mode; **n** número de iteraciones). Filtrando ahora por _load average_, podemos ver la información que nos es necesaria.
+
+- La fecha y hora del último reinicio.
+      Esta información la podemos extraer del comando `who -b`. (**-b** boot)
+
+- Si LVM está activo o no.
+      Para comprobar si LVM (_Logical Volume Manager_, administrador de volúmenes lógicos (particiones)) está activo o no, podemos utilizar el comando list block `lsblk`, que nos mostrará las particiones, y filtrar por LVM con `grep`. La salida la llevamos a `/dev/null`, que es un archivo especial que descarta sin mostrar las salidas de un comando. Ahora podemos mostrar 'yes' si hay coincidencia o 'no' si no la hay.
+
+- El número de conexiones activas.
+      Esta información la podemos obtener de `netstat`. Para ello debemos haber instalado previamente net-tools con `sudo apt install net-tools`. Con `-nt` podemos mostrar en formato numérico (**-n**) las conexiones TCP (**-t**).
+
+- El número de usuarios del servidor.
+      Esto lo podemos ver con `users` y contando el número de palabras de la salida, con `wc -w` (word count, words).
+
+- La dirección IPv4 de tu servidor y su MAC (Media Access Control)
+      La ip la hemos sacado antes con `hostname -I`. El MAC lo podemos sacar con `ip link` y filtrando con `grep "ether"`.
+
+- El número de comandos ejecutados con sudo.
+      Para hacer este recuento, solo necesitamos listar los elementos del archivo `/var/log/sudo/sudo_log` que hemos creado con anterioridad.
+
+
+
+
+
 
