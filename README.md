@@ -420,7 +420,9 @@ Un script es un archivo de texto que contiene una serie de comandos que el siste
 
 > [!INFO]   
 > Mi script está subido al repositorio como archivo, por lo que no me explayaré aquí explicando los comandos.   
-> Se ruega verificar que funciona, ya que puede variar dependiendo del idioma del sistema. En mi caso, está en español.   
+> Se ruega verificar que funciona, ya que puede variar dependiendo del idioma del sistema. En mi caso, está en español.
+
+Como se va a ejecutar con bash, la primera línea del script será `#!/bin/bash`. Para que se ejecute correctamente, debemos darle al archivo `monitoring.sh` permisos de ejecución: `sudo chmod +x monitoring.sh`. 
 
 - Arquitectura del sistema operativo y su versión del kernel:   
       Para mostrar esto, podemos ejecutar `uname` (Unix name), que muestra cierta información del sistema. Con la flag `-a` o `--all`, mostrará toda la información.  
@@ -460,7 +462,30 @@ Un script es un archivo de texto que contiene una serie de comandos que el siste
       Para hacer este recuento, solo necesitamos listar los elementos del archivo `/var/log/sudo/sudo_log` que hemos creado con anterioridad.
 
 
+Después de sacar toda esta información, podemos desplegarla en todas las terminales abiertas, para todos los usuarios, utilizando `wall` (write to all). En mi caso, he guardado los resultados de los comandos en variables y, finalmente, los he mostrado con `wall` para que quede más ordenado y limpio. 
 
+### Ejecución automática del script. Uso de Cron.
 
+Cron es un _daemon_ (demonio), es decir, un proceso que se ejecuta en segundo plano de manera continua. Su función principal es buscar y ejecutar tareas programadas en intervalos de tiempo específicos definidos por el usuario o el sistema. Estas tareas, conocidas como cron jobs, pueden configurarse para ejecutarse diariamente, semanalmente, mensualmente, o en cualquier intervalo de tiempo personalizado.  
 
+Crontab es el archivo donde se programan las tareas que el daemon cron ejecutará en intervalos de tiempo específicos. Cada usuario en el sistema puede tener su propio archivo crontab, en el que puede definir comandos o scripts que se ejecutarán automáticamente a la hora y frecuencia que especifique.  
 
+Para editar el archivo crontab de un usuario, ejecutamos `crontab -e`. En nuestro caso, como queremos modificar el crontab del usuario root, lo haremos con `sudo crontab -u root -e` (**-u** user, **-e** edit).  
+
+Cada línea en crontab tiene el siguiente formato:  
+        
+        * * * * * comando
+ 
+Donde cada asterisco corresponde a un valor de tiempo:   
+   
+Minuto (0 - 59)   
+Hora (0 - 23)   
+Día del mes (1 - 31)   
+Mes (1 - 12)   
+Día de la semana (0 - 7, donde 0 y 7 representan el domingo)   
+
+Este sería un ejemplo de ejecución de nuestro script `monitoring.sh`
+
+![image](https://github.com/user-attachments/assets/5208ab5d-3e02-4103-bf11-560e6bb73c35)
+
+Poner */10 en la columna de los minutos significa 'cada 10 minutos'. Le he añadido el comando `bash` para asegurarme de que se va a ejecutar, en caso de que no tuviera los permisos suficientes. No obstante, este problema lo hemos solventado al principio, con `chmod`.  
