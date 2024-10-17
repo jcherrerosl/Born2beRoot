@@ -45,9 +45,17 @@ Durante toda la evaluación, se recuerda al evaluador que el estudiante evaluado
 
 - Comprueba que el servicio UFW está iniciado:
 
-Para realizar la configuración completa de UFW, ver [Configuración de UFW](#ufw).
+Vamos a configurar UFW (Uncomplicated FireWall). Esta es una herramienta fácil de usar para gestionar el firewall en sistemas Linux. Está diseñada para hacer que la configuración del firewall sea sencilla, permitiendo a los usuarios permitir o bloquear el tráfico de red con comandos básicos. UFW se utiliza para proteger tu sistema controlando qué conexiones entrantes o salientes están permitidas.  
 
-Para comprobar esto, tenemos varias formas de hacerlo:
+Primero lo instalaremos en nuestro sistema, con `sudo apt install ufw`. A continuación, lo habilitaremos con `sudo ufw enable`. Esto hará que se ejecute automáticamente en futuros arranques del sistema, así como que se inicie en el momento.  
+
+```bash
+sudo apt install ufw   
+sudo ufw enable   
+```
+Para añadir la regla 4242, ejecutaremos el comando `sudo ufw allow 4242`. 
+
+Ahora, para demostrar al evaluador que el servicio UFW está iniciado correctamente, podemos ejecutar cualquiera de estos comandos:  
 
 > ```bash
 > sudo ufw status
@@ -63,9 +71,17 @@ Para comprobar esto, tenemos varias formas de hacerlo:
 
 - Comprueba que el servicio SSH está iniciado:
 
-Para realizar la configuración completa de SSH, ver [Configuración de SSH](#ssh)
+SSH (Secure Shell) es un protocolo que permite conectarte de manera segura a otra máquina a través de una red, utilizando cifrado. Es muy común en servidores para gestionar y controlar sistemas remotamente de manera segura. SSH protege la comunicación entre el cliente y el servidor para evitar que terceros puedan ver o modificar los datos.  
 
-Para esto, podemos hacerlo de forma similar al UFW:
+Lo instalamos como ya sabemos, con `sudo apt install ssh` y lo habilitaremos con System Control, ejecutando `sudo systemctl enable ssh`, que hará que se ejecute en futuros arranques del sistema, seguido de `sudo systemctl start ssh`, que lo iniciará al momento.
+
+```bash
+sudo apt install ssh   
+sudo systemctl enable ssh   
+sudo systemctl start ssh   
+```
+
+Para demostrar que está correctamente iniciado, podemos hacerlo de forma similar a UFW, ejecutando cualquiera de estos comandos:  
 
 > ```bash
 > sudo service ssh status
@@ -295,15 +311,6 @@ Dejando las que ya había, quedaría algo así:
 > He usado `tail` en vez de `cat` para mostrar la última línea (-n 1) y no todo el archivo entero. De forma análoga, podría usar `head -n #` para mostrar las \# primeras líneas.
 
 ## UFW
-
-Vamos a configurar UFW (Uncomplicated FireWall). Esta es una herramienta fácil de usar para gestionar el firewall en sistemas Linux. Está diseñada para hacer que la configuración del firewall sea sencilla, permitiendo a los usuarios permitir o bloquear el tráfico de red con comandos básicos. UFW se utiliza para proteger tu sistema controlando qué conexiones entrantes o salientes están permitidas.  
-
-Primero lo instalaremos en nuestro sistema, con `sudo apt install ufw`. A continuación, lo habilitaremos con `sudo ufw enable`. 
-
-```bash
-> sudo apt install ufw   
-> sudo ufw enable   
-```
 
 - Debemos mostrar al evaluador que UFW está correctamente instalado en la VM. Como hicimos al principio, podemos ejecutar `sudo service ufw status` y se nos indicará que está cargado, habilitado y activo.
 - Para demostrar que existe al menos una regla para el puerto 4242, ejecutaremos el comando `sudo ufw status`. Si hemos hecho el bonus, deberían salir otras también.
