@@ -417,7 +417,7 @@ Al ejecutar el comando, nos pedirá una confirmación para conectarnos (la prime
 
 ![image](https://github.com/user-attachments/assets/79f169ea-2534-4fa4-9f80-632df38ceff7)
 
-Primero vamos a crear el script y después procederemos a utilizar cron para que se ejecute.  
+Primero vamos a crear el script `monitoring.sh` y, después, procederemos a utilizar cron para que se ejecute.  
 
 ### Creación del Script
 
